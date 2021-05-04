@@ -88,7 +88,7 @@ os.system("cls")
 print("ROBLOX desktop launcher - who needs a web browser?\n")
 
 if not os.path.exists(currentpath+"\\config.json"):
-	print("could not find config.json, is it in the same folder as the python script?")
+	die("could not find config.json, is it in the same folder as the python script?")
 
 config = json.loads(open(currentpath+"\\config.json", "r").read())
 
