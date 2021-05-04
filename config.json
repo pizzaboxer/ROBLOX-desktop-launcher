@@ -1,0 +1,17 @@
+{
+	".ROBLOSECURITY": "!!! paste your .ROBLOSECURITY cookie here !!!",
+	"LaunchMode": "DirectLaunch",
+	"QuickPlay": 
+	[
+		{
+			"Name": "Crossroads",
+			"ID": 1818,
+			"KeyIndex": "c"
+		},
+		{
+			"Name": "totallynotpizzaboxer's Place",
+			"ID": 5108391948,
+			"KeyIndex": "p"
+		}
+	]
+}
