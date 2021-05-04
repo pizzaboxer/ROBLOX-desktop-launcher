@@ -78,7 +78,7 @@ def join(placeID):
         args = "roblox-player:1+launchmode:play+gameinfo:{ticket}+launchtime:{timestamp}+placelauncherurl:https%3A%2F%2Fassetgame.roblox.com%2Fgame%2FPlaceLauncher.ashx%3Frequest%3DRequestGame%26placeId%3D{placeID}%26isPlayTogetherGame%3Dfalse"
     elif config['LaunchMode'] == "DirectLaunch":
         location = path+"\\RobloxPlayerBeta.exe"
-        args = "--play -a https://auth.roblox.com/v1/authentication-ticket/redeem -t {ticket} -j https://assetgame.roblox.com/game/PlaceLauncher.ashx?request=RequestGame^&placeId={placeID}^&isPlayTogetherGame=false --launchtime={timestamp}"
+        args = "--play -a https://auth.roblox.com/v1/authentication-ticket/redeem -t {ticket} -j https://assetgame.roblox.com/game/PlaceLauncher.ashx?request=RequestGame&placeId={placeID}&isPlayTogetherGame=false --launchtime={timestamp}"
 
     Popen([location, args.format(ticket = ticket, timestamp = '{0:.0f}'.format(round(time.time() * 1000)), placeID = placeID)])
 
