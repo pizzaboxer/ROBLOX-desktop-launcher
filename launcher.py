@@ -3,7 +3,6 @@ import os
 import json
 import time
 import sys
-import warnings
 import msvcrt
 import pathlib
 from subprocess import Popen
@@ -18,31 +17,27 @@ def die(msg):
 def selectGame():
     print("\n> ", end = "")
     keystroke = msvcrt.getch().decode("utf-8")
-    print(keystroke)
+    print(keystroke + "\n")
 
     if keystroke.lower() == "j":
-        join(int(input("\nenter the place ID of the game you want to join: ")))
+        startGame(int(input("enter the place ID of the game you want to join: ")))
     elif keystroke in quickPlayGames:
-        join(quickPlayGames[keystroke.lower()])
+        startGame(quickPlayGames[keystroke.lower()])
     else:
-        print("\ninvalid option")
+        print("invalid option")
         selectGame()
 
-def join(placeID):
-    print("\nchecking latest version of ROBLOX... ", end = "")
+def startGame(placeID):
+    print("checking latest version of ROBLOX... ", end = "")
     version = requests.get("http://setup.roblox.com/version.txt").content.decode("ascii")
     path = os.getenv("LOCALAPPDATA")+"\\Roblox\\Versions\\"+version
     print("done! ("+version+")")
 
     if not os.path.exists(path):
-        print("\nupdating ROBLOX, please wait... ", end = "")
-
-        bootstrapper = requests.get("http://setup.roblox.com/RobloxPlayerLauncher.exe", verify=False)
+        print("updating ROBLOX, please wait... ", end = "")
+        bootstrapper = requests.get("http://setup.roblox.com/RobloxPlayerLauncher.exe")
         open(currentpath+"\\RobloxPlayerLauncher.exe", "wb").write(bootstrapper.content)
-
         os.system('"'+currentpath+'\\RobloxPlayerLauncher.exe" -install')
-        os.remove(currentpath+"\\RobloxPlayerLauncher.exe")
-
         print("done!")
 
     print("fetching CSRF token... ", end = "")
